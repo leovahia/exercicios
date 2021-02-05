@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class Pessoa{
+    
+    constructor( nome, idade ){
+       
+        this._nome = nome;
+        this._idade = idade;
+        this._elemento = document.createElement("p");
+
+        this.atualizaNome();
+    }
+
+    
+    atualizaNome(){
+        this._elemento.textContent = `[${this._idade}] ${this._nome}`;
+    }
+
+  
+    desenha( conteiner ){
+        conteiner.appendChild( this._elemento );
+    }
+}
+
+function criaQueryString(){
+  
+    let quantidade = parseInt( document.getElementById( "resultados" ).value );
+
+    return `?results=${ quantidade }`;
+}
+
+
+let adicionaPessoa = document.getElementById( "adicionaPessoa" );
+
+
+adicionaPessoa.addEventListener( "click", function()
+{
+  
+    let request = new XMLHttpRequest();
+
+   
+    request.open( "GET", `https://randomuser.me/api/${ criaQueryString() }` );
+
+    
+    request.addEventListener( "load", function ()
+    {
+        
+        console.log( `${request.status} (${request.statusText}): Dados recebidos` );
+
+      
+        if ( request.status == 200 /*OK*/ )
+        {
+            
+            let response = JSON.parse( request.responseText );
+            
+          
+            let pessoas = response.results;
+            
+            for ( let pessoa of pessoas )
+            {
+              
+                let novaPessoa = new Pessoa( `${pessoa.name.first} ${pessoa.name.last}`, pessoa.dob.age );
+           
+                novaPessoa.desenha( document.body );
+            }
+        }else
+        {
+            console.log( "Um código inesperado foi retornado!" );
+        }
+    });
+
+
+    request.send();
+
+    console.log( "Pedido foi enviado!" );
+});
+
+
+
+    </script>
+</body>
+</html>

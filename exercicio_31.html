@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 31</title>
+</head>
+<body>
+    <script>
+        /* let taxaCombustivel = 120;
+
+
+function fabricaCarro( nomeDoCarro, placaDoCarro )
+{
+ 
+    let carroNovo =
+    {
+       
+        nome: nomeDoCarro,
+        placa: placaDoCarro,
+        emprestado: "",
+        tanque: 100,
+
+     
+        abastecer: function( precoDoTanqueCheio )
+        {
+     
+            let combustivelAnterior = this.tanque;
+          
+            this.tanque = 100;
+    
+         
+            let custoAbastecimento = ( this.tanque - combustivelAnterior ) * precoDoTanqueCheio / 100;
+            
+            
+            return custoAbastecimento;
+        },
+    
+        
+        emprestar: function()
+        {
+          
+            if ( this.emprestado )
+            {
+                console.log( "Carro já foi emprestado você ainda não pode pegá-lo." );
+            }
+          
+            else
+            {
+               
+                let cliente = prompt("Qual o nome do cliente?");
+              
+                if ( cliente != "" )
+                {
+                    this.emprestado = cliente;
+                }
+            }
+        },
+    
+        
+        devolver: function( quantaGasolinaSobrou )
+        {
+           
+            if ( !this.emprestado )
+            {
+                console.log( "Este carro já foi devolvido! Você não precisa devolvê-lo novamente!" );
+            }
+          
+            else
+            {   
+                
+                this.tanque = quantaGasolinaSobrou;
+                
+                
+                let custo = this.abastecer( taxaCombustivel );
+
+                
+                alert( `Cobrar R$ ${custo.toFixed(2)} de taxa de reabastecimento de ${this.emprestado}` );
+    
+                this.emprestado = "";
+            }
+        }
+    };
+
+    return carroNovo;
+}
+
+
+let carros =
+[
+    fabricaCarro( "Vectra Elite 2.2 MPFI 16V Aut."          , "LGE-3018" ),  // Coloca um novo carro na posição 0
+    fabricaCarro( "Way 1.6 Total Flex 8V Mec."              , "KDW-8217" ),  // Coloca um novo carro na posição 1
+    fabricaCarro( "Dakota Sport 3.9 V6"                     , "NCA-4354" ),  // Coloca um novo carro na posição 2
+    fabricaCarro( "Pampa S 1.8"                             , "NBA-3764" ),  // Coloca um novo carro na posição 3
+    fabricaCarro( "Picape BG-Truck CD Turbo Diesel"         , "JFH-4781" ),  // Coloca um novo carro na posição 4
+    fabricaCarro( "Master 2.3 dCi Extra F.Vitre 16V Diesel" , "HSO-9186" ),  // Coloca um novo carro na posição 5
+    fabricaCarro( "PRISMA Sed. Maxx 1.0 8V FlexPower 4p"    , "JNS-8609" ),  // Coloca um novo carro na posição 6
+    fabricaCarro( "Opala Diplomata/ Diplom. SLE 4.1 / 2.5"  , "LWP-6962" ),  // Coloca um novo carro na posição 7
+    fabricaCarro( "Corsa Sed. Joy 1.0/ 1.0 FlexPower 8V 4p" , "MVK-7720" ),  // Coloca um novo carro na posição 8
+    fabricaCarro( "Gol Rock in Rio 1.0 Mi Total Flex 8V 5p" , "ILJ-6228" )   // Coloca um novo carro na posição 9
+];
+
+
+let tabela = document.getElementById( "automoveis" );
+
+
+for ( let i = 0; i < carros.length; i++ )
+{
+   
+    let carro = carros[i];
+    
+ 
+    let linha = document.createElement("tr");
+    
+ 
+    let celulaModelo = document.createElement("td");
+    
+ 
+    let celulaPlaca = document.createElement("td");
+    
+ 
+    let celulaAcoes = document.createElement("td");
+
+
+    let botaoEmpresta = document.createElement("button");
+    botaoEmpresta.textContent = "Emprestar";
+    
+
+    let botaoDevolve = document.createElement("button");
+    botaoDevolve.textContent = "Devolver";
+
+
+    let textoCliente = document.createElement("span");
+
+ 
+
+
+    botaoEmpresta.disabled = carro.emprestado;
+    
+  
+    botaoEmpresta.addEventListener("click", function()
+    {
+       
+        carro.emprestar();
+
+      
+        textoCliente.innerText = carro.emprestado;
+
+   
+        botaoEmpresta.disabled = ( carro.emprestado != "" );
+        botaoDevolve.disabled = ( carro.emprestado == "" );
+    });
+
+  
+    botaoDevolve.disabled = !carro.emprestado;
+    
+
+    botaoDevolve.addEventListener("click", function()
+    {
+        
+        let combustivelRestante = parseFloat( prompt( `Quantos % restam do tanque do \n[${carro.placa}] ${carro.nome}?` ) );
+        
+       
+        if ( isNaN( combustivelRestante ) )
+        {
+            combustivelRestante = 0;
+        }
+
+        
+        carro.devolver( combustivelRestante );
+
+       
+        textoCliente.innerText = "";
+        
+      
+        botaoEmpresta.disabled = carro.emprestado;
+        botaoDevolve.disabled = !carro.emprestado;
+    });
+
+
+    
+    celulaModelo.textContent = carro.nome;
+
+   
+    celulaPlaca.textContent = carro.placa;
+    
+    
+    celulaAcoes.appendChild( botaoEmpresta );
+    
+  
+    celulaAcoes.appendChild( botaoDevolve );
+
+  
+    celulaAcoes.appendChild( textoCliente );
+    
+   
+    linha.appendChild( celulaModelo );
+    
+ 
+    linha.appendChild( celulaPlaca );
+    
+   
+    linha.appendChild( celulaAcoes );
+
+    tabela.appendChild( linha ); 
+}*/
+    </script>
+</body>
+</html>
